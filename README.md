@@ -219,8 +219,8 @@ Take `META-QUESTPRO-HAND-OCCLUSION`. The seed row was contributed by
 ResXR / Schonberg Lab TAU on `2025-12-09` under Meta XR SDK v78,
 firmware v79–v83. A year later, suppose Lab B at another institution
 re-runs the same procedure on a Quest Pro under firmware v95 and
-observes that `HandTracked` still drops to 0 but the last-known
-position no longer freezes — instead it clears to zero.
+observes that `HandTracked` still drops to 0 but hand position now
+freezes at its last value instead of reading 0.
 
 They add a *second* row with the same `Protocol ID`, their own
 `Contributed By`, `Date of Test` `2026-08-04`, the new firmware
