@@ -1,6 +1,6 @@
 # XR-validation-protocols
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 <!-- Zenodo DOI badge: add at paper submission time -->
 
 A community registry of sensor validation procedures for XR hardware.
@@ -270,5 +270,6 @@ own runs, but the ID itself does not change.
 
 ## License
 
-Apache 2.0 — see [LICENSE](LICENSE). Use the protocols freely; please
-credit the original contributors when you cite them.
+CC0 1.0 Universal (public domain dedication); see [LICENSE](LICENSE).
+Use the protocols freely; please credit the original contributors when
+you cite them.
