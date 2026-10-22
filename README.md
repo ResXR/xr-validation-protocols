@@ -237,6 +237,9 @@ That is the registry working as intended.
 
 Fixes to rows already published, newest first.
 
+- **2026-10-22**, `META-QUESTPRO-HAND-OCCLUSION`, `Outcome`: was
+  "HandTracked drops to 0;". The outcome was cut off; the recordings
+  show hand position reading 0 rather than freezing at its last value.
 - **2026-10-22**, `META-QUESTPRO-FACE-LOWER-FACE-OCCLUSION`, `Outcome`:
   was "Diverges: upper confidence drops to 0, lower stays high (inverse
   of expected)." An earlier ResXR template build had the upper- and
