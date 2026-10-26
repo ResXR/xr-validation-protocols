@@ -1,7 +1,7 @@
 # XR-validation-protocols
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-<!-- Zenodo DOI badge: add at paper submission time -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23668875.svg)](https://doi.org/10.5281/zenodo.23668875)
 
 A community registry of sensor validation procedures for XR hardware.
 One CSV, reviewed via pull request.
@@ -55,10 +55,10 @@ submit changes via pull request. No build step. No web app. No code.
 
 ### Seed protocols
 
-The repo launches with 14 protocols from empirical stress-testing of
+The registry holds 17 protocols from empirical stress-testing of
 the Meta Quest Pro under Meta XR SDK v78, firmware v79–v83 (contributed
-by ResXR / Schonberg Lab TAU, 2025), covering Hand, Eye, Face, and
-Head modalities. They are not a complete map — they are starting
+by ResXR / Schonberg Lab TAU, 2025; 14 at launch; in v1.1.0, 4 added and 1 removed),
+covering Hand, Eye, Face, and Head modalities. They are not a complete map — they are starting
 points the community is invited to extend.
 
 ## How to read a row
@@ -237,6 +237,27 @@ That is the registry working as intended.
 
 Fixes to rows already published, newest first.
 
+- **2026-10-26**, `META-QUESTPRO-HAND-FINGER-FULL-OCCLUSION`: removed.
+  From v1.1.0, every protocol links to recordings that show its
+  outcome; this one can return with such recordings. It remains in
+  v1.0.0.
+- **2026-10-26**, `META-QUESTPRO-FACE-BLINK`, `Outcome` and `Notes`: was
+  "Confirmed; trusted blink signal (not eye-stream flags)." The outcome
+  now describes the deposited face data of the session that shows it.
+- **2026-10-26**, `META-QUESTPRO-HAND-TRACKING-BOUNDARY`, `Outcome`:
+  was "...; HandConfidence not confirmed." The recordings show
+  HandConfidence dropping to Low together with HandTracked, not before.
+- **2026-10-26**, `META-QUESTPRO-HEAD-HEADSET-REMOVAL`, `Outcome`: was
+  "Flags don't drop; removal undetectable (matches Face_Status)." Other
+  signals, such as head height, change during removal; what holds is
+  that no validity flag marks it.
+- **2026-10-26**, `META-QUESTPRO-HAND-FIST`, `Outcome`: was
+  "HandTracked remains 1; confidence unchanged (hand-level, not
+  finger-level)." Per-finger confidence was also recorded and also
+  stayed unchanged.
+- **2026-10-26**, `META-QUESTPRO-FACE-LOWER-FACE-OCCLUSION`, `Outcome`:
+  was "... (as expected; an earlier template build had the two columns
+  swapped)." The swapped columns were in template builds 2.5 and 2.7.
 - **2026-10-22**, `META-QUESTPRO-HAND-OCCLUSION`, `Outcome`: was
   "HandTracked drops to 0;". The outcome was cut off; the recordings
   show hand position reading 0 rather than freezing at its last value.
@@ -267,9 +288,10 @@ that is what we ran, but the schema is vendor-neutral.
 ## Citing this registry
 
 If you use protocols from this registry in published work, please
-cite the registry itself. Tagged releases will be archived on Zenodo;
-the Zenodo record and its DOI will be linked here after the first
-release. GitHub's **Cite this repository** link, in the right sidebar
+cite the registry itself. Tagged releases are archived on Zenodo:
+[doi:10.5281/zenodo.23668875](https://doi.org/10.5281/zenodo.23668875)
+always points to the newest release, and each release has its own DOI
+on that page. GitHub's **Cite this repository** link, in the right sidebar
 of the repository page, gives APA and BibTeX entries from
 [`CITATION.cff`](CITATION.cff).
 
