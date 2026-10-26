@@ -57,7 +57,7 @@ submit changes via pull request. No build step. No web app. No code.
 
 The registry holds 17 protocols from empirical stress-testing of
 the Meta Quest Pro under Meta XR SDK v78, firmware v79–v83 (contributed
-by ResXR / Schonberg Lab TAU, 2025; 14 at launch, 3 added in v1.1.0),
+by ResXR / Schonberg Lab TAU, 2025; 14 at launch; in v1.1.0, 4 added and 1 removed),
 covering Hand, Eye, Face, and Head modalities. They are not a complete map — they are starting
 points the community is invited to extend.
 
@@ -237,6 +237,13 @@ That is the registry working as intended.
 
 Fixes to rows already published, newest first.
 
+- **2026-10-26**, `META-QUESTPRO-HAND-FINGER-FULL-OCCLUSION`: removed.
+  From v1.1.0, every protocol links to recordings that show its
+  outcome; this one can return with such recordings. It remains in
+  v1.0.0.
+- **2026-10-26**, `META-QUESTPRO-FACE-BLINK`, `Outcome` and `Notes`: was
+  "Confirmed; trusted blink signal (not eye-stream flags)." The outcome
+  now describes the deposited face data of the session that shows it.
 - **2026-10-26**, `META-QUESTPRO-HAND-TRACKING-BOUNDARY`, `Outcome`:
   was "...; HandConfidence not confirmed." The recordings show
   HandConfidence dropping to Low together with HandTracked, not before.
