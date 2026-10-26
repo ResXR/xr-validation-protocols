@@ -1,7 +1,7 @@
 # XR-validation-protocols
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-<!-- Zenodo DOI badge: add at paper submission time -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23668875.svg)](https://doi.org/10.5281/zenodo.23668875)
 
 A community registry of sensor validation procedures for XR hardware.
 One CSV, reviewed via pull request.
@@ -55,10 +55,10 @@ submit changes via pull request. No build step. No web app. No code.
 
 ### Seed protocols
 
-The repo launches with 14 protocols from empirical stress-testing of
+The registry holds 17 protocols from empirical stress-testing of
 the Meta Quest Pro under Meta XR SDK v78, firmware v79–v83 (contributed
-by ResXR / Schonberg Lab TAU, 2025), covering Hand, Eye, Face, and
-Head modalities. They are not a complete map — they are starting
+by ResXR / Schonberg Lab TAU, 2025; 14 at launch, 3 added in v1.1.0),
+covering Hand, Eye, Face, and Head modalities. They are not a complete map — they are starting
 points the community is invited to extend.
 
 ## How to read a row
@@ -267,9 +267,10 @@ that is what we ran, but the schema is vendor-neutral.
 ## Citing this registry
 
 If you use protocols from this registry in published work, please
-cite the registry itself. Tagged releases will be archived on Zenodo;
-the Zenodo record and its DOI will be linked here after the first
-release. GitHub's **Cite this repository** link, in the right sidebar
+cite the registry itself. Tagged releases are archived on Zenodo:
+[doi:10.5281/zenodo.23668875](https://doi.org/10.5281/zenodo.23668875)
+always points to the newest release, and each release has its own DOI
+on that page. GitHub's **Cite this repository** link, in the right sidebar
 of the repository page, gives APA and BibTeX entries from
 [`CITATION.cff`](CITATION.cff).
 
