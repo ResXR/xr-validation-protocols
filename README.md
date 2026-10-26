@@ -75,7 +75,7 @@ Take this seed row as a worked example:
 | `Expected Behavior` | `HandTracked` drops to 0; position data freezes at last known value |
 | `Outcome` | `HandTracked` drops to 0; hand position reads 0 rather than freezing at its last value. |
 | `SDK / Firmware` | Meta XR SDK v78 / fw v79-v83 |
-| `Data URL` | *(empty in this row; optional link to a raw-recording deposit)* |
+| `Data URL` | https://doi.org/10.5281/zenodo.23668483 *(the seed rows' raw recordings on Zenodo)* |
 | `Notes` | *(empty in this row; optional caveats)* |
 | `Contributed By` | ResXR / Schonberg Lab TAU (2025) |
 | `Date of Test` | `2025-12-09` *(YYYY-MM-DD, the date the procedure was physically run)* |
