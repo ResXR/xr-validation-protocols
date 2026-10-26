@@ -1,6 +1,6 @@
 # XR-validation-protocols
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 <!-- Zenodo DOI badge: add at paper submission time -->
 
 A community registry of sensor validation procedures for XR hardware.
@@ -17,6 +17,7 @@ One CSV, reviewed via pull request.
 - [Quality bar](#quality-bar)
 - [How to contribute](#how-to-contribute)
 - [Stability and Protocol IDs](#stability-and-protocol-ids)
+- [Corrections](#corrections)
 - [Connection to ResXR](#connection-to-resxr)
 - [Citing this registry](#citing-this-registry)
 - [License](#license)
@@ -48,7 +49,7 @@ documents one validation procedure for one sensor on one device:
 - **What they actually reported when someone ran it** (outcome)
 - **Under which SDK and firmware version**
 
-That is the entire registry. GitHub renders the CSV as a sortable
+That is the entire registry. GitHub renders the CSV as a searchable
 table; contributors edit it directly through the GitHub web editor and
 submit changes via pull request. No build step. No web app. No code.
 
@@ -62,7 +63,7 @@ points the community is invited to extend.
 
 ## How to read a row
 
-Take this row as a worked example:
+Take this seed row as a worked example:
 
 | Column | Value |
 | --- | --- |
@@ -70,14 +71,14 @@ Take this row as a worked example:
 | `Hardware` | Quest Pro |
 | `Modality` | Hand |
 | `Test` | Occlusion |
-| `Procedure` | Move one hand fully behind back outside the headset FOV while keeping the other hand in the baseline position; test each hand separately |
+| `Procedure` | Move one hand fully behind back outside the headset FOV while keeping the other hand in the baseline position (arm extended forward at shoulder height, palm down, fingers fully extended); test each hand separately |
 | `Expected Behavior` | `HandTracked` drops to 0; position data freezes at last known value |
-| `Outcome` | *(filled when someone physically runs the test)* |
+| `Outcome` | `HandTracked` drops to 0; hand position reads 0 rather than freezing at its last value. |
 | `SDK / Firmware` | Meta XR SDK v78 / fw v79-v83 |
-| `Data URL` | *(optional link to a raw-recording deposit)* |
-| `Notes` | *(optional caveats)* |
+| `Data URL` | https://doi.org/10.5281/zenodo.23668483 *(the seed rows' raw recordings on Zenodo)* |
+| `Notes` | *(empty in this row; optional caveats)* |
 | `Contributed By` | ResXR / Schonberg Lab TAU (2025) |
-| `Date of Test` | `2025-09-12` *(YYYY-MM-DD, the date the procedure was physically run)* |
+| `Date of Test` | `2025-12-09` *(YYYY-MM-DD, the date the procedure was physically run)* |
 | `Protocol ID` | `META-QUESTPRO-HAND-OCCLUSION` |
 
 Read left-to-right and you have: who, on what device, doing what,
@@ -104,7 +105,7 @@ this schema fits your work.
 | `Data URL` | Optional link to a deposit (OSF, Zenodo, Figshare) holding raw recordings | Lets people verify your outcome from data, not just take your word for it. Zenodo gives a citable DOI. |
 | `Notes` | Optional caveats, bilateral testing requirements, etc. | Things that don't fit a structured column. |
 | `Contributed By` | Lab or person — e.g. `ResXR / Schonberg Lab TAU (2025)` | Provenance. Year matters because the SDK landscape moves. |
-| `Date of Test` | Date the procedure was physically run, in `YYYY-MM-DD` format — e.g. `2025-09-12` | Pins the row to a moment in time. Critical when firmware updates silently change sensor behavior between two runs of the same procedure, or when two labs re-run the same procedure months apart. |
+| `Date of Test` | Date the procedure was physically run, in `YYYY-MM-DD` format — e.g. `2025-12-09` | Pins the row to a moment in time. Critical when firmware updates silently change sensor behavior between two runs of the same procedure, or when two labs re-run the same procedure months apart. |
 | `Protocol ID` | Unique slug **per procedure** — `PLATFORM-HARDWARE-MODALITY-TEST`, uppercase, hyphen-separated, spaces inside Hardware removed. e.g. `META-QUESTPRO-HAND-OCCLUSION` | A stable identifier for the procedure itself, citable in papers. Multiple rows may share the same `Protocol ID` when different labs or dates re-run the procedure; rows are uniquely identified by the combination of `Protocol ID`, `Contributed By`, and `Date of Test`. |
 
 ## The one rule worth stating clearly
@@ -172,7 +173,7 @@ A submission is in scope when:
 
 1. **Fork** this repo on GitHub.
 2. **Open [`protocols.csv`](protocols.csv) in the GitHub editor.**
-   GitHub renders the file as a sortable table; click the pencil icon
+   GitHub renders the file as a searchable table; click the pencil icon
    to switch to edit mode.
 3. **Add one row per test procedure** following the column schema
    above.
@@ -215,11 +216,11 @@ full identity of a row is the combination of `Protocol ID`,
 ### Example: how a Protocol ID accumulates rows
 
 Take `META-QUESTPRO-HAND-OCCLUSION`. The seed row was contributed by
-ResXR / Schonberg Lab TAU on `2025-09-12` under Meta XR SDK v78,
+ResXR / Schonberg Lab TAU on `2025-12-09` under Meta XR SDK v78,
 firmware v79–v83. A year later, suppose Lab B at another institution
 re-runs the same procedure on a Quest Pro under firmware v95 and
-observes that `HandTracked` still drops to 0 but the last-known
-position no longer freezes — instead it clears to zero.
+observes that `HandTracked` still drops to 0 but hand position now
+freezes at its last value instead of reading 0.
 
 They add a *second* row with the same `Protocol ID`, their own
 `Contributed By`, `Date of Test` `2026-08-04`, the new firmware
@@ -232,35 +233,45 @@ and can see exactly how the behavior changed between them.
 
 That is the registry working as intended.
 
+## Corrections
+
+Fixes to rows already published, newest first.
+
+- **2026-10-22**, `META-QUESTPRO-HAND-OCCLUSION`, `Outcome`: was
+  "HandTracked drops to 0;". The outcome was cut off; the recordings
+  show hand position reading 0 rather than freezing at its last value.
+- **2026-10-22**, `META-QUESTPRO-FACE-LOWER-FACE-OCCLUSION`, `Outcome`:
+  was "Diverges: upper confidence drops to 0, lower stays high (inverse
+  of expected)." An earlier ResXR template build had the upper- and
+  lower-face confidence columns swapped; read with the correct labels,
+  lower-face confidence drops and upper-face confidence is unchanged,
+  as expected.
+
 ## Connection to ResXR
 
-[ResXR](https://github.com/ResXR) is an end-to-end toolkit for standardized
-XR behavioral research built on Unity and the Meta XR SDK. The empirical
-protocols seeded here document the stress-testing that informed its
-quality-validation layer. A paper describing ResXR is in preparation.
+[ResXR](https://github.com/ResXR) is an open-source toolkit for
+behavioral research with standalone Meta Quest headsets: a Unity
+template that records head, hand, eye and face tracking, and an
+independent Python pipeline that checks data quality and exports
+Motion-BIDS datasets. The seed protocols come from the stress tests
+that chose the vendor signals read by the pipeline's hand-tracking-loss
+and eye-closure checks. ResXR is described in a bioRxiv preprint,
+[doi:10.64898/2026.06.17.732869](https://doi.org/10.64898/2026.06.17.732869).
 
 The registry is intentionally a **standalone community resource**. It
 is not part of the ResXR codebase, and contributions are welcomed
 regardless of which XR toolchain you use. Pico, Vive, Varjo, and Apple
-Vision Pro labs — the seed data is Meta-heavy because that is what we
-ran, but the schema is vendor-neutral.
+Vision Pro labs — the seed data are all from the Meta Quest Pro because
+that is what we ran, but the schema is vendor-neutral.
 
 ## Citing this registry
 
 If you use protocols from this registry in published work, please
-cite the registry itself. A Zenodo DOI will be issued at the next
-tagged release; the placeholder below will be updated then.
-
-```bibtex
-@misc{xr-validation-protocols,
-  title  = {xr-validation-protocols: a community registry of sensor
-            validation procedures for XR hardware},
-  author = {{ResXR contributors}},
-  year   = {2026},
-  url    = {https://github.com/ResXR/xr-validation-protocols},
-  note   = {DOI to be added at next tagged release}
-}
-```
+cite the registry itself. Tagged releases will be archived on Zenodo;
+the Zenodo record and its DOI will be linked here after the first
+release. GitHub's **Cite this repository** link, in the right sidebar
+of the repository page, gives APA and BibTeX entries from
+[`CITATION.cff`](CITATION.cff).
 
 When you cite a *specific* protocol from the registry, reference its
 `Protocol ID` (e.g. `META-QUESTPRO-HAND-OCCLUSION`) so readers can
@@ -270,5 +281,6 @@ own runs, but the ID itself does not change.
 
 ## License
 
-Apache 2.0 — see [LICENSE](LICENSE). Use the protocols freely; please
-credit the original contributors when you cite them.
+CC0 1.0 Universal (public domain dedication); see [LICENSE](LICENSE).
+Use the protocols freely; please credit the original contributors when
+you cite them.
