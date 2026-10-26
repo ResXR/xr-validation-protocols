@@ -237,6 +237,20 @@ That is the registry working as intended.
 
 Fixes to rows already published, newest first.
 
+- **2026-10-26**, `META-QUESTPRO-HAND-TRACKING-BOUNDARY`, `Outcome`:
+  was "...; HandConfidence not confirmed." The recordings show
+  HandConfidence dropping to Low together with HandTracked, not before.
+- **2026-10-26**, `META-QUESTPRO-HEAD-HEADSET-REMOVAL`, `Outcome`: was
+  "Flags don't drop; removal undetectable (matches Face_Status)." Other
+  signals, such as head height, change during removal; what holds is
+  that no validity flag marks it.
+- **2026-10-26**, `META-QUESTPRO-HAND-FIST`, `Outcome`: was
+  "HandTracked remains 1; confidence unchanged (hand-level, not
+  finger-level)." Per-finger confidence was also recorded and also
+  stayed unchanged.
+- **2026-10-26**, `META-QUESTPRO-FACE-LOWER-FACE-OCCLUSION`, `Outcome`:
+  was "... (as expected; an earlier template build had the two columns
+  swapped)." The swapped columns were in template builds 2.5 and 2.7.
 - **2026-10-22**, `META-QUESTPRO-HAND-OCCLUSION`, `Outcome`: was
   "HandTracked drops to 0;". The outcome was cut off; the recordings
   show hand position reading 0 rather than freezing at its last value.
